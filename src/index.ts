@@ -46,8 +46,7 @@ const server = Bun.serve({
         return Response.json(await getCachedUsage(provider))
       },
     },
-    "/claude": index,
-    "/opencode": index,
+    ...Object.fromEntries(PROVIDERS.map((provider) => [`/${provider}`, index])),
   },
 })
 
